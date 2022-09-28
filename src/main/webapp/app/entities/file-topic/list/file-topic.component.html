@@ -1,0 +1,141 @@
+<div>
+  <h2 id="page-heading" data-cy="FileTopicHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.home.title">File Topics</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-file-topic"
+        [routerLink]="['/file-topic/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.home.createLabel"> Create a new File Topic </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fileTopics?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.home.notFound">No File Topics found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="fileTopics && fileTopics.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fileOrginalName">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileOrginalName">File Orginal Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fileNameUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameUz">File Name Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fileNameRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameRu">File Name Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fileNameKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameKr">File Name Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fileType">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileType">File Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fileSize">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileSize">File Size</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="filePath">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.filePath">File Path</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="materialTopicLevel.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.fileTopic.materialTopicLevel">Material Topic Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fileTopic of fileTopics; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/file-topic', fileTopic.id, 'view']">{{ fileTopic.id }}</a>
+          </td>
+          <td>{{ fileTopic.fileOrginalName }}</td>
+          <td>{{ fileTopic.fileNameUz }}</td>
+          <td>{{ fileTopic.fileNameRu }}</td>
+          <td>{{ fileTopic.fileNameKr }}</td>
+          <td>{{ fileTopic.fileType }}</td>
+          <td>{{ fileTopic.fileSize }}</td>
+          <td>{{ fileTopic.filePath }}</td>
+          <td>
+            <div *ngIf="fileTopic.materialTopicLevel">
+              <a [routerLink]="['/material-topic-level', fileTopic.materialTopicLevel.id, 'view']">{{ fileTopic.materialTopicLevel.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/file-topic', fileTopic.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/file-topic', fileTopic.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(fileTopic)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

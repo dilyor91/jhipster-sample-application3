@@ -1,0 +1,128 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-file-topic-heading"
+        data-cy="FileTopicCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplication3App.fileTopic.home.createOrEditLabel"
+      >
+        Create or edit a File Topic
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileOrginalName" for="field_fileOrginalName"
+            >File Orginal Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="fileOrginalName"
+            id="field_fileOrginalName"
+            data-cy="fileOrginalName"
+            formControlName="fileOrginalName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameUz" for="field_fileNameUz"
+            >File Name Uz</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="fileNameUz"
+            id="field_fileNameUz"
+            data-cy="fileNameUz"
+            formControlName="fileNameUz"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameRu" for="field_fileNameRu"
+            >File Name Ru</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="fileNameRu"
+            id="field_fileNameRu"
+            data-cy="fileNameRu"
+            formControlName="fileNameRu"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameKr" for="field_fileNameKr"
+            >File Name Kr</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="fileNameKr"
+            id="field_fileNameKr"
+            data-cy="fileNameKr"
+            formControlName="fileNameKr"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileType" for="field_fileType">File Type</label>
+          <input type="text" class="form-control" name="fileType" id="field_fileType" data-cy="fileType" formControlName="fileType" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileSize" for="field_fileSize">File Size</label>
+          <input type="number" class="form-control" name="fileSize" id="field_fileSize" data-cy="fileSize" formControlName="fileSize" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.filePath" for="field_filePath">File Path</label>
+          <input type="text" class="form-control" name="filePath" id="field_filePath" data-cy="filePath" formControlName="filePath" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.fileTopic.materialTopicLevel" for="field_materialTopicLevel"
+            >Material Topic Level</label
+          >
+          <select
+            class="form-control"
+            id="field_materialTopicLevel"
+            data-cy="materialTopicLevel"
+            name="materialTopicLevel"
+            formControlName="materialTopicLevel"
+            [compareWith]="compareMaterialTopicLevel"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="materialTopicLevelOption" *ngFor="let materialTopicLevelOption of materialTopicLevelsSharedCollection">
+              {{ materialTopicLevelOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

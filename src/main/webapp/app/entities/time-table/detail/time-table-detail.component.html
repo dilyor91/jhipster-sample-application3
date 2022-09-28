@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="timeTable">
+      <h2 data-cy="timeTableDetailsHeading"><span jhiTranslate="jhipsterSampleApplication3App.timeTable.detail.title">Time Table</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ timeTable.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.titleUz">Title Uz</span></dt>
+        <dd>
+          <span>{{ timeTable.titleUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.titleRu">Title Ru</span></dt>
+        <dd>
+          <span>{{ timeTable.titleRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.titleKr">Title Kr</span></dt>
+        <dd>
+          <span>{{ timeTable.titleKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.contentUz">Content Uz</span></dt>
+        <dd>
+          <span>{{ timeTable.contentUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.contentRu">Content Ru</span></dt>
+        <dd>
+          <span>{{ timeTable.contentRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.contentKr">Content Kr</span></dt>
+        <dd>
+          <span>{{ timeTable.contentKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.timeTable.postedDate">Posted Date</span></dt>
+        <dd>
+          <span>{{ timeTable.postedDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/time-table', timeTable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

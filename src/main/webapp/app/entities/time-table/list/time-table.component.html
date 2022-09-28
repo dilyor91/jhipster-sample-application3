@@ -1,0 +1,130 @@
+<div>
+  <h2 id="page-heading" data-cy="TimeTableHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.timeTable.home.title">Time Tables</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.timeTable.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-time-table"
+        [routerLink]="['/time-table/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.timeTable.home.createLabel"> Create a new Time Table </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="timeTables?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.timeTable.home.notFound">No Time Tables found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="timeTables && timeTables.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.titleUz">Title Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.titleRu">Title Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.titleKr">Title Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.contentUz">Content Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.contentRu">Content Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.contentKr">Content Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="postedDate">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.timeTable.postedDate">Posted Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timeTable of timeTables; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/time-table', timeTable.id, 'view']">{{ timeTable.id }}</a>
+          </td>
+          <td>{{ timeTable.titleUz }}</td>
+          <td>{{ timeTable.titleRu }}</td>
+          <td>{{ timeTable.titleKr }}</td>
+          <td>{{ timeTable.contentUz }}</td>
+          <td>{{ timeTable.contentRu }}</td>
+          <td>{{ timeTable.contentKr }}</td>
+          <td>{{ timeTable.postedDate | formatMediumDate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/time-table', timeTable.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/time-table', timeTable.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(timeTable)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

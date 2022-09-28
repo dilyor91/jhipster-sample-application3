@@ -1,0 +1,123 @@
+<div>
+  <h2 id="page-heading" data-cy="AddressHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.address.home.title">Addresses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.address.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-address"
+        [routerLink]="['/address/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.address.home.createLabel"> Create a new Address </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="addresses?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.address.home.notFound">No Addresses found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="addresses && addresses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.address.titleUz">Title Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.address.titleRu">Title Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.address.titleKr">Title Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.address.contentUz">Content Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.address.contentRu">Content Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.address.contentKr">Content Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let address of addresses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/address', address.id, 'view']">{{ address.id }}</a>
+          </td>
+          <td>{{ address.titleUz }}</td>
+          <td>{{ address.titleRu }}</td>
+          <td>{{ address.titleKr }}</td>
+          <td>{{ address.contentUz }}</td>
+          <td>{{ address.contentRu }}</td>
+          <td>{{ address.contentKr }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/address', address.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/address', address.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(address)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

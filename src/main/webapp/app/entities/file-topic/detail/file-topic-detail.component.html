@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fileTopic">
+      <h2 data-cy="fileTopicDetailsHeading"><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.detail.title">File Topic</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ fileTopic.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileOrginalName">File Orginal Name</span></dt>
+        <dd>
+          <span>{{ fileTopic.fileOrginalName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameUz">File Name Uz</span></dt>
+        <dd>
+          <span>{{ fileTopic.fileNameUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameRu">File Name Ru</span></dt>
+        <dd>
+          <span>{{ fileTopic.fileNameRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileNameKr">File Name Kr</span></dt>
+        <dd>
+          <span>{{ fileTopic.fileNameKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileType">File Type</span></dt>
+        <dd>
+          <span>{{ fileTopic.fileType }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.fileSize">File Size</span></dt>
+        <dd>
+          <span>{{ fileTopic.fileSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.filePath">File Path</span></dt>
+        <dd>
+          <span>{{ fileTopic.filePath }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.fileTopic.materialTopicLevel">Material Topic Level</span></dt>
+        <dd>
+          <div *ngIf="fileTopic.materialTopicLevel">
+            <a [routerLink]="['/material-topic-level', fileTopic.materialTopicLevel.id, 'view']">{{ fileTopic.materialTopicLevel.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/file-topic', fileTopic.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

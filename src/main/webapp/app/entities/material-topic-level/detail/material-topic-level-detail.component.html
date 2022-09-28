@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="materialTopicLevel">
+      <h2 data-cy="materialTopicLevelDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplication3App.materialTopicLevel.detail.title">Material Topic Level</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ materialTopicLevel.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.materialTopicLevel.titleUz">Title Uz</span></dt>
+        <dd>
+          <span>{{ materialTopicLevel.titleUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.materialTopicLevel.titleRu">Title Ru</span></dt>
+        <dd>
+          <span>{{ materialTopicLevel.titleRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.materialTopicLevel.titleKr">Title Kr</span></dt>
+        <dd>
+          <span>{{ materialTopicLevel.titleKr }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/material-topic-level', materialTopicLevel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

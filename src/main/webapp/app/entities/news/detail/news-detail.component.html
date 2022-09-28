@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="news">
+      <h2 data-cy="newsDetailsHeading"><span jhiTranslate="jhipsterSampleApplication3App.news.detail.title">News</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ news.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.titleUz">Title Uz</span></dt>
+        <dd>
+          <span>{{ news.titleUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.titleRu">Title Ru</span></dt>
+        <dd>
+          <span>{{ news.titleRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.titleKr">Title Kr</span></dt>
+        <dd>
+          <span>{{ news.titleKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.contentUz">Content Uz</span></dt>
+        <dd>
+          <span>{{ news.contentUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.contentRu">Content Ru</span></dt>
+        <dd>
+          <span>{{ news.contentRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.contentKr">Content Kr</span></dt>
+        <dd>
+          <span>{{ news.contentKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.postedDate">Posted Date</span></dt>
+        <dd>
+          <span>{{ news.postedDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.news.status">Status</span></dt>
+        <dd>
+          <span>{{ news.status }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/news', news.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

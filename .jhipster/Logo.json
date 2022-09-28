@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20220928115231",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "logo",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "logoData",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Logo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

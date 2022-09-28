@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="attachment">
+      <h2 data-cy="attachmentDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplication3App.attachment.detail.title">Attachment</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ attachment.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.fileNameUz">File Name Uz</span></dt>
+        <dd>
+          <span>{{ attachment.fileNameUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.fileNameRu">File Name Ru</span></dt>
+        <dd>
+          <span>{{ attachment.fileNameRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.fileNameKr">File Name Kr</span></dt>
+        <dd>
+          <span>{{ attachment.fileNameKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.path">Path</span></dt>
+        <dd>
+          <span>{{ attachment.path }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.originalFileName">Original File Name</span></dt>
+        <dd>
+          <span>{{ attachment.originalFileName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.contentType">Content Type</span></dt>
+        <dd>
+          <span>{{ attachment.contentType }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.fileSize">File Size</span></dt>
+        <dd>
+          <span>{{ attachment.fileSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.suffix">Suffix</span></dt>
+        <dd>
+          <span>{{ attachment.suffix }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.thumbnailFileName">Thumbnail File Name</span></dt>
+        <dd>
+          <span>{{ attachment.thumbnailFileName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.bucketName">Bucket Name</span></dt>
+        <dd>
+          <span>{{ attachment.bucketName }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/attachment', attachment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
