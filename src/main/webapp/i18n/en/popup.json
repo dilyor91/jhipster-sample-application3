@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplication3App": {
+    "popup": {
+      "home": {
+        "title": "Popups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Popup",
+        "createOrEditLabel": "Create or edit a Popup",
+        "notFound": "No Popups found"
+      },
+      "created": "A new Popup is created with identifier {{ param }}",
+      "updated": "A Popup is updated with identifier {{ param }}",
+      "deleted": "A Popup is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Popup {{ id }}?"
+      },
+      "detail": {
+        "title": "Popup"
+      },
+      "id": "ID",
+      "isImage": "Is Image",
+      "videoUrl": "Video Url",
+      "redirectUrl": "Redirect Url",
+      "attachment": "Attachment"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="institution">
+      <h2 data-cy="institutionDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplication3App.institution.detail.title">Institution</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ institution.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.institutionType">Institution Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplication3App.InstitutType.' + institution.institutionType }}">{{
+            institution.institutionType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.titleUz">Title Uz</span></dt>
+        <dd>
+          <span>{{ institution.titleUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.titleRu">Title Ru</span></dt>
+        <dd>
+          <span>{{ institution.titleRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.titleKr">Title Kr</span></dt>
+        <dd>
+          <span>{{ institution.titleKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.contentUz">Content Uz</span></dt>
+        <dd>
+          <span>{{ institution.contentUz }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.contentRu">Content Ru</span></dt>
+        <dd>
+          <span>{{ institution.contentRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.contentKr">Content Kr</span></dt>
+        <dd>
+          <span>{{ institution.contentKr }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.logoName">Logo Name</span></dt>
+        <dd>
+          <span>{{ institution.logoName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.institution.logoData">Logo Data</span></dt>
+        <dd>
+          <span>{{ institution.logoData }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/institution', institution.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

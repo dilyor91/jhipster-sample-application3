@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="image">
+      <h2 data-cy="imageDetailsHeading"><span jhiTranslate="jhipsterSampleApplication3App.image.detail.title">Image</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ image.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.image.orginalName">Orginal Name</span></dt>
+        <dd>
+          <span>{{ image.orginalName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.image.name">Name</span></dt>
+        <dd>
+          <span>{{ image.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.image.imageData">Image Data</span></dt>
+        <dd>
+          <span>{{ image.imageData }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.image.mainlyPhoto">Mainly Photo</span></dt>
+        <dd>
+          <span>{{ image.mainlyPhoto }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.image.image">Image</span></dt>
+        <dd>
+          <div *ngIf="image.image">
+            <a [routerLink]="['/album', image.image.id, 'view']">{{ image.image.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/image', image.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

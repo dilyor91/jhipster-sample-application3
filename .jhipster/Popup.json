@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220928115228",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "popup",
+  "fields": [
+    {
+      "fieldName": "isImage",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "videoUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "redirectUrl",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Popup",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "attachment",
+      "ownerSide": true,
+      "relationshipName": "attachment",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

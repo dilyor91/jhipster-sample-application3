@@ -1,0 +1,115 @@
+<div>
+  <h2 id="page-heading" data-cy="MaterialTopicHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.home.title">Material Topics</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-material-topic"
+        [routerLink]="['/material-topic/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.home.createLabel"> Create a new Material Topic </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="materialTopics?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.home.notFound">No Material Topics found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="materialTopics && materialTopics.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.titleUz">Title Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.titleRu">Title Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.titleKr">Title Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="materialTopicLevel.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.materialTopic.materialTopicLevel">Material Topic Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materialTopic of materialTopics; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/material-topic', materialTopic.id, 'view']">{{ materialTopic.id }}</a>
+          </td>
+          <td>{{ materialTopic.titleUz }}</td>
+          <td>{{ materialTopic.titleRu }}</td>
+          <td>{{ materialTopic.titleKr }}</td>
+          <td>
+            <div *ngIf="materialTopic.materialTopicLevel">
+              <a [routerLink]="['/material-topic-level', materialTopic.materialTopicLevel.id, 'view']">{{
+                materialTopic.materialTopicLevel.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/material-topic', materialTopic.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/material-topic', materialTopic.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(materialTopic)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

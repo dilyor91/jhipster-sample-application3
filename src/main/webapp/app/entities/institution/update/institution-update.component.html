@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-institution-heading"
+        data-cy="InstitutionCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplication3App.institution.home.createOrEditLabel"
+      >
+        Create or edit a Institution
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.institutionType" for="field_institutionType"
+            >Institution Type</label
+          >
+          <select
+            class="form-control"
+            name="institutionType"
+            formControlName="institutionType"
+            id="field_institutionType"
+            data-cy="institutionType"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplication3App.InstitutType.null' | translate }}</option>
+            <option *ngFor="let institutType of institutTypeValues" [value]="institutType">
+              {{ 'jhipsterSampleApplication3App.InstitutType.' + institutType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.titleUz" for="field_titleUz">Title Uz</label>
+          <input type="text" class="form-control" name="titleUz" id="field_titleUz" data-cy="titleUz" formControlName="titleUz" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.titleRu" for="field_titleRu">Title Ru</label>
+          <input type="text" class="form-control" name="titleRu" id="field_titleRu" data-cy="titleRu" formControlName="titleRu" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.titleKr" for="field_titleKr">Title Kr</label>
+          <input type="text" class="form-control" name="titleKr" id="field_titleKr" data-cy="titleKr" formControlName="titleKr" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.contentUz" for="field_contentUz"
+            >Content Uz</label
+          >
+          <input type="text" class="form-control" name="contentUz" id="field_contentUz" data-cy="contentUz" formControlName="contentUz" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.contentRu" for="field_contentRu"
+            >Content Ru</label
+          >
+          <input type="text" class="form-control" name="contentRu" id="field_contentRu" data-cy="contentRu" formControlName="contentRu" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.contentKr" for="field_contentKr"
+            >Content Kr</label
+          >
+          <input type="text" class="form-control" name="contentKr" id="field_contentKr" data-cy="contentKr" formControlName="contentKr" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.logoName" for="field_logoName">Logo Name</label>
+          <input type="text" class="form-control" name="logoName" id="field_logoName" data-cy="logoName" formControlName="logoName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.institution.logoData" for="field_logoData">Logo Data</label>
+          <input type="text" class="form-control" name="logoData" id="field_logoData" data-cy="logoData" formControlName="logoData" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

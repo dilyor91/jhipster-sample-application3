@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="popup">
+      <h2 data-cy="popupDetailsHeading"><span jhiTranslate="jhipsterSampleApplication3App.popup.detail.title">Popup</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ popup.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.popup.isImage">Is Image</span></dt>
+        <dd>
+          <span>{{ popup.isImage }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.popup.videoUrl">Video Url</span></dt>
+        <dd>
+          <span>{{ popup.videoUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.popup.redirectUrl">Redirect Url</span></dt>
+        <dd>
+          <span>{{ popup.redirectUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.popup.attachment">Attachment</span></dt>
+        <dd>
+          <div *ngIf="popup.attachment">
+            <a [routerLink]="['/attachment', popup.attachment.id, 'view']">{{ popup.attachment.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/popup', popup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "changelogDate": "20220928115229",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "attachment",
+  "fields": [
+    {
+      "fieldName": "fileNameUz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileNameRu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileNameKr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "path",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "originalFileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contentType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileSize",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "suffix",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "8"
+    },
+    {
+      "fieldName": "thumbnailFileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bucketName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Файлы. Логотипы также хранятся здесь с типом LOGO",
+  "jpaMetamodelFiltering": false,
+  "name": "Attachment",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

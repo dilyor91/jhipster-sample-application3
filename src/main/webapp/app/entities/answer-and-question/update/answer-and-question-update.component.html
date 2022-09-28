@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-answer-and-question-heading"
+        data-cy="AnswerAndQuestionCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.home.createOrEditLabel"
+      >
+        Create or edit a Answer And Question
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.questionUz" for="field_questionUz"
+            >Question Uz</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="questionUz"
+            id="field_questionUz"
+            data-cy="questionUz"
+            formControlName="questionUz"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.questionRu" for="field_questionRu"
+            >Question Ru</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="questionRu"
+            id="field_questionRu"
+            data-cy="questionRu"
+            formControlName="questionRu"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.questionKr" for="field_questionKr"
+            >Question Kr</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="questionKr"
+            id="field_questionKr"
+            data-cy="questionKr"
+            formControlName="questionKr"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.answerUz" for="field_answerUz"
+            >Answer Uz</label
+          >
+          <input type="text" class="form-control" name="answerUz" id="field_answerUz" data-cy="answerUz" formControlName="answerUz" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.answerRu" for="field_answerRu"
+            >Answer Ru</label
+          >
+          <input type="text" class="form-control" name="answerRu" id="field_answerRu" data-cy="answerRu" formControlName="answerRu" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.answerKr" for="field_answerKr"
+            >Answer Kr</label
+          >
+          <input type="text" class="form-control" name="answerKr" id="field_answerKr" data-cy="answerKr" formControlName="answerKr" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

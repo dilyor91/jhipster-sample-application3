@@ -1,0 +1,123 @@
+<div>
+  <h2 id="page-heading" data-cy="AnswerAndQuestionHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.home.title">Answer And Questions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-answer-and-question"
+        [routerLink]="['/answer-and-question/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.home.createLabel"> Create a new Answer And Question </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="answerAndQuestions?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.home.notFound">No Answer And Questions found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="answerAndQuestions && answerAndQuestions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="questionUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.questionUz">Question Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="questionRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.questionRu">Question Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="questionKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.questionKr">Question Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="answerUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.answerUz">Answer Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="answerRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.answerRu">Answer Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="answerKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.answerAndQuestion.answerKr">Answer Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let answerAndQuestion of answerAndQuestions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/answer-and-question', answerAndQuestion.id, 'view']">{{ answerAndQuestion.id }}</a>
+          </td>
+          <td>{{ answerAndQuestion.questionUz }}</td>
+          <td>{{ answerAndQuestion.questionRu }}</td>
+          <td>{{ answerAndQuestion.questionKr }}</td>
+          <td>{{ answerAndQuestion.answerUz }}</td>
+          <td>{{ answerAndQuestion.answerRu }}</td>
+          <td>{{ answerAndQuestion.answerKr }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/answer-and-question', answerAndQuestion.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/answer-and-question', answerAndQuestion.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(answerAndQuestion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

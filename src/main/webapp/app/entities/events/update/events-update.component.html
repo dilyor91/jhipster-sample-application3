@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-events-heading"
+        data-cy="EventsCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplication3App.events.home.createOrEditLabel"
+      >
+        Create or edit a Events
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.titleUz" for="field_titleUz">Title Uz</label>
+          <input type="text" class="form-control" name="titleUz" id="field_titleUz" data-cy="titleUz" formControlName="titleUz" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.titleRu" for="field_titleRu">Title Ru</label>
+          <input type="text" class="form-control" name="titleRu" id="field_titleRu" data-cy="titleRu" formControlName="titleRu" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.titleKr" for="field_titleKr">Title Kr</label>
+          <input type="text" class="form-control" name="titleKr" id="field_titleKr" data-cy="titleKr" formControlName="titleKr" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.contentUz" for="field_contentUz">Content Uz</label>
+          <input type="text" class="form-control" name="contentUz" id="field_contentUz" data-cy="contentUz" formControlName="contentUz" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.contentRu" for="field_contentRu">Content Ru</label>
+          <input type="text" class="form-control" name="contentRu" id="field_contentRu" data-cy="contentRu" formControlName="contentRu" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.contentKr" for="field_contentKr">Content Kr</label>
+          <input type="text" class="form-control" name="contentKr" id="field_contentKr" data-cy="contentKr" formControlName="contentKr" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.postedDate" for="field_postedDate"
+            >Posted Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_postedDate"
+              data-cy="postedDate"
+              type="text"
+              class="form-control"
+              name="postedDate"
+              ngbDatepicker
+              #postedDateDp="ngbDatepicker"
+              formControlName="postedDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="postedDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.events.status" for="field_status">Status</label>
+          <input type="checkbox" class="form-check" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

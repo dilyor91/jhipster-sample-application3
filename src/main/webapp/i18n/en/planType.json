@@ -1,0 +1,9 @@
+{
+  "jhipsterSampleApplication3App": {
+    "PlanType": {
+      "null": "",
+      "MONTH": "MONTH",
+      "YEAR": "YEAR"
+    }
+  }
+}

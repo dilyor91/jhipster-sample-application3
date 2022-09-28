@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="file">
+      <h2 data-cy="fileDetailsHeading"><span jhiTranslate="jhipsterSampleApplication3App.file.detail.title">File</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ file.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.orginalName">Orginal Name</span></dt>
+        <dd>
+          <span>{{ file.orginalName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.fileName">File Name</span></dt>
+        <dd>
+          <span>{{ file.fileName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.fileSize">File Size</span></dt>
+        <dd>
+          <span>{{ file.fileSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.fileFormat">File Format</span></dt>
+        <dd>
+          <span>{{ file.fileFormat }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.filePath">File Path</span></dt>
+        <dd>
+          <span>{{ file.filePath }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.fileEntity">File Entity</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplication3App.FileEntity.' + file.fileEntity }}">{{ file.fileEntity }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.institution">Institution</span></dt>
+        <dd>
+          <div *ngIf="file.institution">
+            <a [routerLink]="['/institution', file.institution.id, 'view']">{{ file.institution.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.file.studyAtKorea">Study At Korea</span></dt>
+        <dd>
+          <div *ngIf="file.studyAtKorea">
+            <a [routerLink]="['/study-at-korea', file.studyAtKorea.id, 'view']">{{ file.studyAtKorea.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/file', file.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
