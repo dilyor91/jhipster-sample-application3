@@ -48,7 +48,9 @@
       "Task",
       "Employee",
       "Job",
-      "JobHistory"
+      "JobHistory",
+      "Owner",
+      "Car"
     ],
     "entitySuffix": "",
     "gitCompany": "",
@@ -56,7 +58,7 @@
     "jhipsterVersion": "7.9.3",
     "jwtSecretKey": "ZWRmOTExZjFhMjdjOWQzNTM2OGVhNTlmZmE3OGVmYjZjNDgyNmYyYTJiM2FmMTlhNzE3M2ZhNTk3ZjI1Nzk4OWY5NjRhMGEyODZiNDViY2E3ZmNhZGM3ZDNiYjI5Mzc5ZjE1NzQwOGY3NjI4YzZjMmNkZDg3OGZkMWM4NGMzMjY=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1664365976000,
+    "lastLiquibaseTimestamp": 1664435325000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "otherModules": [],
