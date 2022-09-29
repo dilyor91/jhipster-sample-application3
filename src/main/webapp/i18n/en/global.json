@@ -36,6 +36,8 @@
         "employee": "Employee",
         "job": "Job",
         "jobHistory": "Job History",
+        "owner": "Owner",
+        "car": "Car",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

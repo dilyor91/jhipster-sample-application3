@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220929070844",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "owner",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "family",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Owner",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "car",
+      "otherEntityRelationshipName": "owner",
+      "relationshipName": "car",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -85,6 +85,9 @@ public class CacheConfiguration {
             createCache(cm, uz.tashkec.domain.Job.class.getName());
             createCache(cm, uz.tashkec.domain.Job.class.getName() + ".tasks");
             createCache(cm, uz.tashkec.domain.JobHistory.class.getName());
+            createCache(cm, uz.tashkec.domain.Owner.class.getName());
+            createCache(cm, uz.tashkec.domain.Owner.class.getName() + ".cars");
+            createCache(cm, uz.tashkec.domain.Car.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
