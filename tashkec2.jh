@@ -1,0 +1,51 @@
+
+/** Культура Кореи **/
+entity KoreanCulture {
+    titleUz String maxlength(1024),
+    titleRu String maxlength(1024),
+    titleKr String maxlength(1024),
+    contentUz String maxlength(4000),
+    contentRu String maxlength(4000),
+    contentKr String maxlength(4000)
+}
+
+/** Партнеры */
+entity Partner {
+    titleUz String maxlength(1024),
+    titleRu String maxlength(1024),
+    titleKr String maxlength(1024),
+    webUrl String maxlength(1024),
+    youtubeUrl String maxlength(256)
+}
+relationship OneToOne {
+    Partner{attachment} to Attachment
+}
+
+/** Файлы. Логотипы также хранятся здесь с типом LOGO */
+entity Attachment {
+	fileNameUz String,
+    fileNameRu String,
+    fileNameKr String,
+	path String,
+    originalFileName String,
+    contentType String,
+    fileSize Integer,
+    suffix String maxlength(8),
+    thumbnailFileName String,
+    bucketName String
+}
+
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate Partner with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
