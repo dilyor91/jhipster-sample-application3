@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20221010073302",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "partner",
+  "fields": [
+    {
+      "fieldName": "titleUz",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "titleRu",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "titleKr",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "webUrl",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "youtubeUrl",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Партнеры",
+  "jpaMetamodelFiltering": false,
+  "name": "Partner",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "attachment",
+      "ownerSide": true,
+      "relationshipName": "attachment",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

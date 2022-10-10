@@ -38,6 +38,8 @@
         "jobHistory": "Job History",
         "owner": "Owner",
         "car": "Car",
+        "koreanCulture": "Korean Culture",
+        "partner": "Partner",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

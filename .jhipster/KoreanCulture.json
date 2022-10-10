@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20221010073301",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "korean_culture",
+  "fields": [
+    {
+      "fieldName": "titleUz",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "titleRu",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "titleKr",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "contentUz",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4000"
+    },
+    {
+      "fieldName": "contentRu",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4000"
+    },
+    {
+      "fieldName": "contentKr",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4000"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Культура Кореи",
+  "jpaMetamodelFiltering": false,
+  "name": "KoreanCulture",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

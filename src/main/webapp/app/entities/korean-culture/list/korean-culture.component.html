@@ -1,0 +1,123 @@
+<div>
+  <h2 id="page-heading" data-cy="KoreanCultureHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.home.title">Korean Cultures</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-korean-culture"
+        [routerLink]="['/korean-culture/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.home.createLabel"> Create a new Korean Culture </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="koreanCultures?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.home.notFound">No Korean Cultures found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="koreanCultures && koreanCultures.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.titleUz">Title Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.titleRu">Title Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.titleKr">Title Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.contentUz">Content Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.contentRu">Content Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contentKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.contentKr">Content Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let koreanCulture of koreanCultures; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/korean-culture', koreanCulture.id, 'view']">{{ koreanCulture.id }}</a>
+          </td>
+          <td>{{ koreanCulture.titleUz }}</td>
+          <td>{{ koreanCulture.titleRu }}</td>
+          <td>{{ koreanCulture.titleKr }}</td>
+          <td>{{ koreanCulture.contentUz }}</td>
+          <td>{{ koreanCulture.contentRu }}</td>
+          <td>{{ koreanCulture.contentKr }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/korean-culture', koreanCulture.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/korean-culture', koreanCulture.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(koreanCulture)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<div>
+  <h2 id="page-heading" data-cy="PartnerHeading">
+    <span jhiTranslate="jhipsterSampleApplication3App.partner.home.title">Partners</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.partner.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-partner"
+        [routerLink]="['/partner/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplication3App.partner.home.createLabel"> Create a new Partner </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="partners?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplication3App.partner.home.notFound">No Partners found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="partners && partners.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleUz">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.partner.titleUz">Title Uz</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.partner.titleRu">Title Ru</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="titleKr">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.partner.titleKr">Title Kr</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="webUrl">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.partner.webUrl">Web Url</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="youtubeUrl">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.partner.youtubeUrl">Youtube Url</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="attachment.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.partner.attachment">Attachment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let partner of partners; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/partner', partner.id, 'view']">{{ partner.id }}</a>
+          </td>
+          <td>{{ partner.titleUz }}</td>
+          <td>{{ partner.titleRu }}</td>
+          <td>{{ partner.titleKr }}</td>
+          <td>{{ partner.webUrl }}</td>
+          <td>{{ partner.youtubeUrl }}</td>
+          <td>
+            <div *ngIf="partner.attachment">
+              <a [routerLink]="['/attachment', partner.attachment.id, 'view']">{{ partner.attachment.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/partner', partner.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/partner', partner.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(partner)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="partners && partners.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -159,6 +159,16 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'jhipsterSampleApplication3App.car.home.title' },
         loadChildren: () => import('./car/car.module').then(m => m.CarModule),
       },
+      {
+        path: 'korean-culture',
+        data: { pageTitle: 'jhipsterSampleApplication3App.koreanCulture.home.title' },
+        loadChildren: () => import('./korean-culture/korean-culture.module').then(m => m.KoreanCultureModule),
+      },
+      {
+        path: 'partner',
+        data: { pageTitle: 'jhipsterSampleApplication3App.partner.home.title' },
+        loadChildren: () => import('./partner/partner.module').then(m => m.PartnerModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
