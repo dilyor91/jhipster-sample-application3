@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplication3App": {
+    "koreanCulture": {
+      "home": {
+        "title": "Korean Cultures",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Korean Culture",
+        "createOrEditLabel": "Create or edit a Korean Culture",
+        "notFound": "No Korean Cultures found"
+      },
+      "created": "A new Korean Culture is created with identifier {{ param }}",
+      "updated": "A Korean Culture is updated with identifier {{ param }}",
+      "deleted": "A Korean Culture is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Korean Culture {{ id }}?"
+      },
+      "detail": {
+        "title": "Korean Culture"
+      },
+      "id": "ID",
+      "titleUz": "Title Uz",
+      "titleRu": "Title Ru",
+      "titleKr": "Title Kr",
+      "contentUz": "Content Uz",
+      "contentRu": "Content Ru",
+      "contentKr": "Content Kr"
+    }
+  }
+}

@@ -88,6 +88,8 @@ public class CacheConfiguration {
             createCache(cm, uz.tashkec.domain.Owner.class.getName());
             createCache(cm, uz.tashkec.domain.Owner.class.getName() + ".cars");
             createCache(cm, uz.tashkec.domain.Car.class.getName());
+            createCache(cm, uz.tashkec.domain.KoreanCulture.class.getName());
+            createCache(cm, uz.tashkec.domain.Partner.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
