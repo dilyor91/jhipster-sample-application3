@@ -27,7 +27,8 @@
       "fileSize": "File Size",
       "suffix": "Suffix",
       "thumbnailFileName": "Thumbnail File Name",
-      "bucketName": "Bucket Name"
+      "bucketName": "Bucket Name",
+      "koreanCulture": "Korean Culture"
     }
   }
 }

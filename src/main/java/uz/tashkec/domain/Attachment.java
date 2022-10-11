@@ -54,6 +54,9 @@ public class Attachment implements Serializable {
     @Column(name = "bucket_name")
     private String bucketName;
 
+    @ManyToOne
+    private KoreanCulture koreanCulture;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -197,6 +200,19 @@ public class Attachment implements Serializable {
 
     public void setBucketName(String bucketName) {
         this.bucketName = bucketName;
+    }
+
+    public KoreanCulture getKoreanCulture() {
+        return this.koreanCulture;
+    }
+
+    public void setKoreanCulture(KoreanCulture koreanCulture) {
+        this.koreanCulture = koreanCulture;
+    }
+
+    public Attachment koreanCulture(KoreanCulture koreanCulture) {
+        this.setKoreanCulture(koreanCulture);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

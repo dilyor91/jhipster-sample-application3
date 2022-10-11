@@ -35,6 +35,8 @@ public class AttachmentDTO implements Serializable {
 
     private String bucketName;
 
+    private KoreanCultureDTO koreanCulture;
+
     public Long getId() {
         return id;
     }
@@ -123,6 +125,14 @@ public class AttachmentDTO implements Serializable {
         this.bucketName = bucketName;
     }
 
+    public KoreanCultureDTO getKoreanCulture() {
+        return koreanCulture;
+    }
+
+    public void setKoreanCulture(KoreanCultureDTO koreanCulture) {
+        this.koreanCulture = koreanCulture;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -159,6 +169,7 @@ public class AttachmentDTO implements Serializable {
             ", suffix='" + getSuffix() + "'" +
             ", thumbnailFileName='" + getThumbnailFileName() + "'" +
             ", bucketName='" + getBucketName() + "'" +
+            ", koreanCulture=" + getKoreanCulture() +
             "}";
     }
 }

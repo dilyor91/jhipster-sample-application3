@@ -9,6 +9,8 @@ import { of, Subject, from } from 'rxjs';
 import { AttachmentFormService } from './attachment-form.service';
 import { AttachmentService } from '../service/attachment.service';
 import { IAttachment } from '../attachment.model';
+import { IKoreanCulture } from 'app/entities/korean-culture/korean-culture.model';
+import { KoreanCultureService } from 'app/entities/korean-culture/service/korean-culture.service';
 
 import { AttachmentUpdateComponent } from './attachment-update.component';
 
@@ -18,6 +20,7 @@ describe('Attachment Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let attachmentFormService: AttachmentFormService;
   let attachmentService: AttachmentService;
+  let koreanCultureService: KoreanCultureService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,17 +43,43 @@ describe('Attachment Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     attachmentFormService = TestBed.inject(AttachmentFormService);
     attachmentService = TestBed.inject(AttachmentService);
+    koreanCultureService = TestBed.inject(KoreanCultureService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
+    it('Should call KoreanCulture query and add missing value', () => {
       const attachment: IAttachment = { id: 456 };
+      const koreanCulture: IKoreanCulture = { id: 1801 };
+      attachment.koreanCulture = koreanCulture;
+
+      const koreanCultureCollection: IKoreanCulture[] = [{ id: 269 }];
+      jest.spyOn(koreanCultureService, 'query').mockReturnValue(of(new HttpResponse({ body: koreanCultureCollection })));
+      const additionalKoreanCultures = [koreanCulture];
+      const expectedCollection: IKoreanCulture[] = [...additionalKoreanCultures, ...koreanCultureCollection];
+      jest.spyOn(koreanCultureService, 'addKoreanCultureToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ attachment });
       comp.ngOnInit();
 
+      expect(koreanCultureService.query).toHaveBeenCalled();
+      expect(koreanCultureService.addKoreanCultureToCollectionIfMissing).toHaveBeenCalledWith(
+        koreanCultureCollection,
+        ...additionalKoreanCultures.map(expect.objectContaining)
+      );
+      expect(comp.koreanCulturesSharedCollection).toEqual(expectedCollection);
+    });
+
+    it('Should update editForm', () => {
+      const attachment: IAttachment = { id: 456 };
+      const koreanCulture: IKoreanCulture = { id: 81299 };
+      attachment.koreanCulture = koreanCulture;
+
+      activatedRoute.data = of({ attachment });
+      comp.ngOnInit();
+
+      expect(comp.koreanCulturesSharedCollection).toContain(koreanCulture);
       expect(comp.attachment).toEqual(attachment);
     });
   });
@@ -120,6 +149,18 @@ describe('Attachment Management Update Component', () => {
       expect(attachmentService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Compare relationships', () => {
+    describe('compareKoreanCulture', () => {
+      it('Should forward to koreanCultureService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(koreanCultureService, 'compareKoreanCulture');
+        comp.compareKoreanCulture(entity, entity2);
+        expect(koreanCultureService.compareKoreanCulture).toHaveBeenCalledWith(entity, entity2);
+      });
     });
   });
 });

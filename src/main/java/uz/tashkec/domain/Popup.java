@@ -1,5 +1,6 @@
 package uz.tashkec.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
@@ -31,6 +32,7 @@ public class Popup implements Serializable {
     @Column(name = "redirect_url")
     private String redirectUrl;
 
+    @JsonIgnoreProperties(value = { "koreanCulture" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Attachment attachment;

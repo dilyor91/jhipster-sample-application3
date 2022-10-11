@@ -1,5 +1,6 @@
 package uz.tashkec.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -43,6 +44,7 @@ public class Partner implements Serializable {
     @Column(name = "youtube_url", length = 256)
     private String youtubeUrl;
 
+    @JsonIgnoreProperties(value = { "koreanCulture" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Attachment attachment;

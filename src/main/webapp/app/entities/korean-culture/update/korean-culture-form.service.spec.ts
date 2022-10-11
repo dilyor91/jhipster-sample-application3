@@ -26,6 +26,7 @@ describe('KoreanCulture Form Service', () => {
             contentUz: expect.any(Object),
             contentRu: expect.any(Object),
             contentKr: expect.any(Object),
+            koreanCultureTYpe: expect.any(Object),
           })
         );
       });
@@ -42,6 +43,7 @@ describe('KoreanCulture Form Service', () => {
             contentUz: expect.any(Object),
             contentRu: expect.any(Object),
             contentKr: expect.any(Object),
+            koreanCultureTYpe: expect.any(Object),
           })
         );
       });

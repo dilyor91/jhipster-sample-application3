@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import uz.tashkec.domain.enumeration.KoreanCultureType;
 
 /**
  * Культура Кореи
@@ -46,6 +47,10 @@ public class KoreanCulture implements Serializable {
     @Size(max = 4000)
     @Column(name = "content_kr", length = 4000)
     private String contentKr;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "korean_culture_t_ype")
+    private KoreanCultureType koreanCultureTYpe;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -140,6 +145,19 @@ public class KoreanCulture implements Serializable {
         this.contentKr = contentKr;
     }
 
+    public KoreanCultureType getKoreanCultureTYpe() {
+        return this.koreanCultureTYpe;
+    }
+
+    public KoreanCulture koreanCultureTYpe(KoreanCultureType koreanCultureTYpe) {
+        this.setKoreanCultureTYpe(koreanCultureTYpe);
+        return this;
+    }
+
+    public void setKoreanCultureTYpe(KoreanCultureType koreanCultureTYpe) {
+        this.koreanCultureTYpe = koreanCultureTYpe;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -170,6 +188,7 @@ public class KoreanCulture implements Serializable {
             ", contentUz='" + getContentUz() + "'" +
             ", contentRu='" + getContentRu() + "'" +
             ", contentKr='" + getContentKr() + "'" +
+            ", koreanCultureTYpe='" + getKoreanCultureTYpe() + "'" +
             "}";
     }
 }

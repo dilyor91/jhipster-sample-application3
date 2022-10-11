@@ -40,6 +40,11 @@
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
+    },
+    {
+      "fieldName": "koreanCultureTYpe",
+      "fieldType": "KoreanCultureType",
+      "fieldValues": "ADDITIONAL_LESSON,INTRODUCE_KOREAN_CULTURE"
     }
   ],
   "fluentMethods": true,

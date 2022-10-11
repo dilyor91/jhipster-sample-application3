@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import { AttachmentFormService, AttachmentFormGroup } from './attachment-form.service';
 import { IAttachment } from '../attachment.model';
 import { AttachmentService } from '../service/attachment.service';
+import { IKoreanCulture } from 'app/entities/korean-culture/korean-culture.model';
+import { KoreanCultureService } from 'app/entities/korean-culture/service/korean-culture.service';
 
 @Component({
   selector: 'jhi-attachment-update',
@@ -16,13 +18,19 @@ export class AttachmentUpdateComponent implements OnInit {
   isSaving = false;
   attachment: IAttachment | null = null;
 
+  koreanCulturesSharedCollection: IKoreanCulture[] = [];
+
   editForm: AttachmentFormGroup = this.attachmentFormService.createAttachmentFormGroup();
 
   constructor(
     protected attachmentService: AttachmentService,
     protected attachmentFormService: AttachmentFormService,
+    protected koreanCultureService: KoreanCultureService,
     protected activatedRoute: ActivatedRoute
   ) {}
+
+  compareKoreanCulture = (o1: IKoreanCulture | null, o2: IKoreanCulture | null): boolean =>
+    this.koreanCultureService.compareKoreanCulture(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ attachment }) => {
@@ -30,6 +38,8 @@ export class AttachmentUpdateComponent implements OnInit {
       if (attachment) {
         this.updateForm(attachment);
       }
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -69,5 +79,22 @@ export class AttachmentUpdateComponent implements OnInit {
   protected updateForm(attachment: IAttachment): void {
     this.attachment = attachment;
     this.attachmentFormService.resetForm(this.editForm, attachment);
+
+    this.koreanCulturesSharedCollection = this.koreanCultureService.addKoreanCultureToCollectionIfMissing<IKoreanCulture>(
+      this.koreanCulturesSharedCollection,
+      attachment.koreanCulture
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.koreanCultureService
+      .query()
+      .pipe(map((res: HttpResponse<IKoreanCulture[]>) => res.body ?? []))
+      .pipe(
+        map((koreanCultures: IKoreanCulture[]) =>
+          this.koreanCultureService.addKoreanCultureToCollectionIfMissing<IKoreanCulture>(koreanCultures, this.attachment?.koreanCulture)
+        )
+      )
+      .subscribe((koreanCultures: IKoreanCulture[]) => (this.koreanCulturesSharedCollection = koreanCultures));
   }
 }

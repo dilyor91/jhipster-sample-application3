@@ -28,6 +28,7 @@ type AttachmentFormGroupContent = {
   suffix: FormControl<IAttachment['suffix']>;
   thumbnailFileName: FormControl<IAttachment['thumbnailFileName']>;
   bucketName: FormControl<IAttachment['bucketName']>;
+  koreanCulture: FormControl<IAttachment['koreanCulture']>;
 };
 
 export type AttachmentFormGroup = FormGroup<AttachmentFormGroupContent>;
@@ -59,6 +60,7 @@ export class AttachmentFormService {
       }),
       thumbnailFileName: new FormControl(attachmentRawValue.thumbnailFileName),
       bucketName: new FormControl(attachmentRawValue.bucketName),
+      koreanCulture: new FormControl(attachmentRawValue.koreanCulture),
     });
   }
 

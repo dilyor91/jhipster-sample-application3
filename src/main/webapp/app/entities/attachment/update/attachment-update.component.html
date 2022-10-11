@@ -139,6 +139,25 @@
             formControlName="bucketName"
           />
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplication3App.attachment.koreanCulture" for="field_koreanCulture"
+            >Korean Culture</label
+          >
+          <select
+            class="form-control"
+            id="field_koreanCulture"
+            data-cy="koreanCulture"
+            name="koreanCulture"
+            formControlName="koreanCulture"
+            [compareWith]="compareKoreanCulture"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="koreanCultureOption" *ngFor="let koreanCultureOption of koreanCulturesSharedCollection">
+              {{ koreanCultureOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

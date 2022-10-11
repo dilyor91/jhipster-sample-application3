@@ -24,6 +24,7 @@ type KoreanCultureFormGroupContent = {
   contentUz: FormControl<IKoreanCulture['contentUz']>;
   contentRu: FormControl<IKoreanCulture['contentRu']>;
   contentKr: FormControl<IKoreanCulture['contentKr']>;
+  koreanCultureTYpe: FormControl<IKoreanCulture['koreanCultureTYpe']>;
 };
 
 export type KoreanCultureFormGroup = FormGroup<KoreanCultureFormGroupContent>;
@@ -61,6 +62,7 @@ export class KoreanCultureFormService {
       contentKr: new FormControl(koreanCultureRawValue.contentKr, {
         validators: [Validators.maxLength(4000)],
       }),
+      koreanCultureTYpe: new FormControl(koreanCultureRawValue.koreanCultureTYpe),
     });
   }
 

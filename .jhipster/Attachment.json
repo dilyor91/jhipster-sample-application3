@@ -54,6 +54,12 @@
   "name": "Attachment",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "koreanCulture",
+      "relationshipName": "koreanCulture",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "serviceImpl"
 }
