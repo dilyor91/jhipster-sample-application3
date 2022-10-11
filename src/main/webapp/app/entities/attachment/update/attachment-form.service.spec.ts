@@ -30,6 +30,7 @@ describe('Attachment Form Service', () => {
             suffix: expect.any(Object),
             thumbnailFileName: expect.any(Object),
             bucketName: expect.any(Object),
+            koreanCulture: expect.any(Object),
           })
         );
       });
@@ -50,6 +51,7 @@ describe('Attachment Form Service', () => {
             suffix: expect.any(Object),
             thumbnailFileName: expect.any(Object),
             bucketName: expect.any(Object),
+            koreanCulture: expect.any(Object),
           })
         );
       });

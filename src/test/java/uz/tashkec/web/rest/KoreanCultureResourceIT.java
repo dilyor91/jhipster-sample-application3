@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import uz.tashkec.IntegrationTest;
 import uz.tashkec.domain.KoreanCulture;
+import uz.tashkec.domain.enumeration.KoreanCultureType;
 import uz.tashkec.repository.KoreanCultureRepository;
 import uz.tashkec.service.dto.KoreanCultureDTO;
 import uz.tashkec.service.mapper.KoreanCultureMapper;
@@ -48,6 +49,9 @@ class KoreanCultureResourceIT {
 
     private static final String DEFAULT_CONTENT_KR = "AAAAAAAAAA";
     private static final String UPDATED_CONTENT_KR = "BBBBBBBBBB";
+
+    private static final KoreanCultureType DEFAULT_KOREAN_CULTURE_T_YPE = KoreanCultureType.ADDITIONAL_LESSON;
+    private static final KoreanCultureType UPDATED_KOREAN_CULTURE_T_YPE = KoreanCultureType.INTRODUCE_KOREAN_CULTURE;
 
     private static final String ENTITY_API_URL = "/api/korean-cultures";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -82,7 +86,8 @@ class KoreanCultureResourceIT {
             .titleKr(DEFAULT_TITLE_KR)
             .contentUz(DEFAULT_CONTENT_UZ)
             .contentRu(DEFAULT_CONTENT_RU)
-            .contentKr(DEFAULT_CONTENT_KR);
+            .contentKr(DEFAULT_CONTENT_KR)
+            .koreanCultureTYpe(DEFAULT_KOREAN_CULTURE_T_YPE);
         return koreanCulture;
     }
 
@@ -99,7 +104,8 @@ class KoreanCultureResourceIT {
             .titleKr(UPDATED_TITLE_KR)
             .contentUz(UPDATED_CONTENT_UZ)
             .contentRu(UPDATED_CONTENT_RU)
-            .contentKr(UPDATED_CONTENT_KR);
+            .contentKr(UPDATED_CONTENT_KR)
+            .koreanCultureTYpe(UPDATED_KOREAN_CULTURE_T_YPE);
         return koreanCulture;
     }
 
@@ -130,6 +136,7 @@ class KoreanCultureResourceIT {
         assertThat(testKoreanCulture.getContentUz()).isEqualTo(DEFAULT_CONTENT_UZ);
         assertThat(testKoreanCulture.getContentRu()).isEqualTo(DEFAULT_CONTENT_RU);
         assertThat(testKoreanCulture.getContentKr()).isEqualTo(DEFAULT_CONTENT_KR);
+        assertThat(testKoreanCulture.getKoreanCultureTYpe()).isEqualTo(DEFAULT_KOREAN_CULTURE_T_YPE);
     }
 
     @Test
@@ -170,7 +177,8 @@ class KoreanCultureResourceIT {
             .andExpect(jsonPath("$.[*].titleKr").value(hasItem(DEFAULT_TITLE_KR)))
             .andExpect(jsonPath("$.[*].contentUz").value(hasItem(DEFAULT_CONTENT_UZ)))
             .andExpect(jsonPath("$.[*].contentRu").value(hasItem(DEFAULT_CONTENT_RU)))
-            .andExpect(jsonPath("$.[*].contentKr").value(hasItem(DEFAULT_CONTENT_KR)));
+            .andExpect(jsonPath("$.[*].contentKr").value(hasItem(DEFAULT_CONTENT_KR)))
+            .andExpect(jsonPath("$.[*].koreanCultureTYpe").value(hasItem(DEFAULT_KOREAN_CULTURE_T_YPE.toString())));
     }
 
     @Test
@@ -190,7 +198,8 @@ class KoreanCultureResourceIT {
             .andExpect(jsonPath("$.titleKr").value(DEFAULT_TITLE_KR))
             .andExpect(jsonPath("$.contentUz").value(DEFAULT_CONTENT_UZ))
             .andExpect(jsonPath("$.contentRu").value(DEFAULT_CONTENT_RU))
-            .andExpect(jsonPath("$.contentKr").value(DEFAULT_CONTENT_KR));
+            .andExpect(jsonPath("$.contentKr").value(DEFAULT_CONTENT_KR))
+            .andExpect(jsonPath("$.koreanCultureTYpe").value(DEFAULT_KOREAN_CULTURE_T_YPE.toString()));
     }
 
     @Test
@@ -218,7 +227,8 @@ class KoreanCultureResourceIT {
             .titleKr(UPDATED_TITLE_KR)
             .contentUz(UPDATED_CONTENT_UZ)
             .contentRu(UPDATED_CONTENT_RU)
-            .contentKr(UPDATED_CONTENT_KR);
+            .contentKr(UPDATED_CONTENT_KR)
+            .koreanCultureTYpe(UPDATED_KOREAN_CULTURE_T_YPE);
         KoreanCultureDTO koreanCultureDTO = koreanCultureMapper.toDto(updatedKoreanCulture);
 
         restKoreanCultureMockMvc
@@ -239,6 +249,7 @@ class KoreanCultureResourceIT {
         assertThat(testKoreanCulture.getContentUz()).isEqualTo(UPDATED_CONTENT_UZ);
         assertThat(testKoreanCulture.getContentRu()).isEqualTo(UPDATED_CONTENT_RU);
         assertThat(testKoreanCulture.getContentKr()).isEqualTo(UPDATED_CONTENT_KR);
+        assertThat(testKoreanCulture.getKoreanCultureTYpe()).isEqualTo(UPDATED_KOREAN_CULTURE_T_YPE);
     }
 
     @Test
@@ -340,6 +351,7 @@ class KoreanCultureResourceIT {
         assertThat(testKoreanCulture.getContentUz()).isEqualTo(UPDATED_CONTENT_UZ);
         assertThat(testKoreanCulture.getContentRu()).isEqualTo(DEFAULT_CONTENT_RU);
         assertThat(testKoreanCulture.getContentKr()).isEqualTo(DEFAULT_CONTENT_KR);
+        assertThat(testKoreanCulture.getKoreanCultureTYpe()).isEqualTo(DEFAULT_KOREAN_CULTURE_T_YPE);
     }
 
     @Test
@@ -360,7 +372,8 @@ class KoreanCultureResourceIT {
             .titleKr(UPDATED_TITLE_KR)
             .contentUz(UPDATED_CONTENT_UZ)
             .contentRu(UPDATED_CONTENT_RU)
-            .contentKr(UPDATED_CONTENT_KR);
+            .contentKr(UPDATED_CONTENT_KR)
+            .koreanCultureTYpe(UPDATED_KOREAN_CULTURE_T_YPE);
 
         restKoreanCultureMockMvc
             .perform(
@@ -380,6 +393,7 @@ class KoreanCultureResourceIT {
         assertThat(testKoreanCulture.getContentUz()).isEqualTo(UPDATED_CONTENT_UZ);
         assertThat(testKoreanCulture.getContentRu()).isEqualTo(UPDATED_CONTENT_RU);
         assertThat(testKoreanCulture.getContentKr()).isEqualTo(UPDATED_CONTENT_KR);
+        assertThat(testKoreanCulture.getKoreanCultureTYpe()).isEqualTo(UPDATED_KOREAN_CULTURE_T_YPE);
     }
 
     @Test

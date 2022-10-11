@@ -56,6 +56,12 @@
         <dd>
           <span>{{ attachment.bucketName }}</span>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.attachment.koreanCulture">Korean Culture</span></dt>
+        <dd>
+          <div *ngIf="attachment.koreanCulture">
+            <a [routerLink]="['/korean-culture', attachment.koreanCulture.id, 'view']">{{ attachment.koreanCulture.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

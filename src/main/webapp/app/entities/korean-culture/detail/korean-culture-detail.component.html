@@ -40,6 +40,12 @@
         <dd>
           <span>{{ koreanCulture.contentKr }}</span>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.koreanCultureTYpe">Korean Culture T Ype</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplication3App.KoreanCultureType.' + koreanCulture.koreanCultureTYpe }}">{{
+            koreanCulture.koreanCultureTYpe
+          }}</span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

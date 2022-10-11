@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.validation.constraints.*;
+import uz.tashkec.domain.enumeration.KoreanCultureType;
 
 /**
  * A DTO for the {@link uz.tashkec.domain.KoreanCulture} entity.
@@ -31,6 +32,8 @@ public class KoreanCultureDTO implements Serializable {
 
     @Size(max = 4000)
     private String contentKr;
+
+    private KoreanCultureType koreanCultureTYpe;
 
     public Long getId() {
         return id;
@@ -88,6 +91,14 @@ public class KoreanCultureDTO implements Serializable {
         this.contentKr = contentKr;
     }
 
+    public KoreanCultureType getKoreanCultureTYpe() {
+        return koreanCultureTYpe;
+    }
+
+    public void setKoreanCultureTYpe(KoreanCultureType koreanCultureTYpe) {
+        this.koreanCultureTYpe = koreanCultureTYpe;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -120,6 +131,7 @@ public class KoreanCultureDTO implements Serializable {
             ", contentUz='" + getContentUz() + "'" +
             ", contentRu='" + getContentRu() + "'" +
             ", contentKr='" + getContentKr() + "'" +
+            ", koreanCultureTYpe='" + getKoreanCultureTYpe() + "'" +
             "}";
     }
 }

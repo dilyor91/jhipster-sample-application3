@@ -1,3 +1,5 @@
+import { KoreanCultureType } from 'app/entities/enumerations/korean-culture-type.model';
+
 import { IKoreanCulture, NewKoreanCulture } from './korean-culture.model';
 
 export const sampleWithRequiredData: IKoreanCulture = {
@@ -5,20 +7,21 @@ export const sampleWithRequiredData: IKoreanCulture = {
 };
 
 export const sampleWithPartialData: IKoreanCulture = {
-  id: 33062,
-  titleKr: 'Djibouti',
-  contentRu: 'quantify info-mediaries withdrawal',
-  contentKr: 'Cambridgeshire',
+  id: 26795,
+  titleKr: 'Down-sized quantify',
+  contentRu: 'Hill',
+  contentKr: 'override Factors',
 };
 
 export const sampleWithFullData: IKoreanCulture = {
-  id: 22813,
-  titleUz: 'Granite Director',
-  titleRu: 'Designer dot-com',
-  titleKr: 'Wells Dong compress',
-  contentUz: 'infrastructure',
-  contentRu: 'Tasty Fresh',
-  contentKr: 'radical attitude Shoes',
+  id: 61457,
+  titleUz: 'firewall',
+  titleRu: 'Director Walk',
+  titleKr: 'dot-com District national',
+  contentUz: 'compress extranet navigate',
+  contentRu: 'transition Fresh Product',
+  contentKr: 'attitude Shoes',
+  koreanCultureTYpe: KoreanCultureType['INTRODUCE_KOREAN_CULTURE'],
 };
 
 export const sampleWithNewData: NewKoreanCulture = {

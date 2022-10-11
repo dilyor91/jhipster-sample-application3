@@ -74,6 +74,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="koreanCultureTYpe">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplication3App.koreanCulture.koreanCultureTYpe">Korean Culture T Ype</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -88,6 +94,9 @@
           <td>{{ koreanCulture.contentUz }}</td>
           <td>{{ koreanCulture.contentRu }}</td>
           <td>{{ koreanCulture.contentKr }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplication3App.KoreanCultureType.' + koreanCulture.koreanCultureTYpe }}">
+            {{ koreanCulture.koreanCultureTYpe }}
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

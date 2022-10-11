@@ -7,6 +7,7 @@ import { finalize } from 'rxjs/operators';
 import { KoreanCultureFormService, KoreanCultureFormGroup } from './korean-culture-form.service';
 import { IKoreanCulture } from '../korean-culture.model';
 import { KoreanCultureService } from '../service/korean-culture.service';
+import { KoreanCultureType } from 'app/entities/enumerations/korean-culture-type.model';
 
 @Component({
   selector: 'jhi-korean-culture-update',
@@ -15,6 +16,7 @@ import { KoreanCultureService } from '../service/korean-culture.service';
 export class KoreanCultureUpdateComponent implements OnInit {
   isSaving = false;
   koreanCulture: IKoreanCulture | null = null;
+  koreanCultureTypeValues = Object.keys(KoreanCultureType);
 
   editForm: KoreanCultureFormGroup = this.koreanCultureFormService.createKoreanCultureFormGroup();
 
